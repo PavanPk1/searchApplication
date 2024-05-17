@@ -2,7 +2,7 @@ import "./App.css";
 import { CiSearch } from "react-icons/ci";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { TailSpin } from "react-loader-spinner";
 import { FaCircleArrowRight } from "react-icons/fa6";
@@ -17,6 +17,11 @@ const App = () => {
   const [pageNo, setPage] = useState(1);
   // console.log(pageNo);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getImages();
+  },[pageNo]);
+
   const getImages = async () => {
     setLoading(true);
     try {
@@ -41,11 +46,13 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     getImages();
+    setPage(1);
   };
 
   const handleSearch = (quickInput) => {
     searchInput.current.value = quickInput;
     getImages();
+    setPage(1);
   };
   const renderLoader = () => (
     <div className="loader-container">
