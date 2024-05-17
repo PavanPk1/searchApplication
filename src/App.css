@@ -28,3 +28,87 @@
     width: 250px;
   }
 }
+.images{
+  height: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.heading{
+  font-family: "Bree Serif";
+  font-size: 40px;
+  text-align: center;
+}
+.quick-actions{
+  margin: 10px 0;
+  width: 350px;
+  height: 75px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.quick-action{
+  font-family: "Roboto";
+  margin: 5px 10px;
+  border-radius: 5px;
+  background-color: skyblue;
+  border: 1px solid #000;
+}
+.quick-action:hover{
+  border: 2px solid blue;
+}
+.imagesContainer{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  overflow: auto;
+  height: 100%;
+}
+.fetch-image{
+  width: 240px;
+  height: 240px;
+  margin: 10px;
+}
+.fetch-image:hover{
+  transform: scale(1.1);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.para{
+  font-family: "Roboto";
+  font-size: 20px;
+  text-align: center;
+  color: red;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.pagination{
+  margin: 10px 0;
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+}
+.pagination-btns{
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+}
+.page-btn{
+  font-family: "Roboto";
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: skyblue;
+  border: 1px solid #000;
+}
+.pageNo{
+  font-family: "Roboto";
+  font-size: 20px;
+  font-weight: bold;
+}
+span{
+  color: red;
+}
