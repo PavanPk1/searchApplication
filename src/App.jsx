@@ -2,7 +2,7 @@ import "./App.css";
 import { CiSearch } from "react-icons/ci";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { TailSpin } from "react-loader-spinner";
 import { FaCircleArrowRight } from "react-icons/fa6";
@@ -18,30 +18,33 @@ const App = () => {
   // console.log(pageNo);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    getImages();
-  },[pageNo]);
-
-  const getImages = async () => {
+  const getImages = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await axios.get(
-        `${url}?query=${
-          searchInput.current.value
-        }&page=${pageNo}&per_page=${images_per_page}&client_id=${
-          import.meta.env.VITE_API_KEY
-        }`
-      );
-      // console.log(response);
-      setImages(response.data.results);
-      setPageCount(response.data.total_pages);
-      // console.log(response.data.results[0].urls.small);
+      if (searchInput.current.value) {
+        const response = await axios.get(
+          `${url}?query=${
+            searchInput.current.value
+          }&page=${pageNo}&per_page=${images_per_page}&client_id=${
+            import.meta.env.VITE_API_KEY
+          }`
+        );
+        // console.log(response);
+        setImages(response.data.results);
+        setPageCount(response.data.total_pages);
+        // console.log(response.data.results[0].urls.small);
+      }
     } catch (error) {
       console.log(`Error Occured While Api Call : ${error}`);
     } finally {
       setLoading(false);
     }
-  };
+  },[pageNo]);
+
+  
+  useEffect(() => {
+    getImages();
+  }, [getImages, pageNo]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
