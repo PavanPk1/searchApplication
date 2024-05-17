@@ -1,0 +1,30 @@
+.mainContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  height: 100vh;
+}
+.search-logo{
+  width: 30px;
+}
+.searchContainer{
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 3px solid rgb(151, 210, 234);
+}
+.searchInput{
+  width: 350px;
+  height: 32px;
+  border-width: 0px;
+  outline: none;
+  font-family: "Bree Serif";
+  font-size: 18px;
+}
+@media (max-width:756px){
+  .searchInput{
+    width: 250px;
+  }
+}
